@@ -1,0 +1,6 @@
+<h1>My Messages</h1>
+<ul>
+  {% for msg in messages %}
+    <li>{{ msg.station }} – {{ msg.text }} ({{ msg.created_at }})</li>
+  {% endfor %}
+</ul>

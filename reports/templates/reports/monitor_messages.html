@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block title %}Monitor Messages{% endblock %}
+
+{% block content %}
+  <h1>Messages for {{ selected_date }}</h1>
+
+  <!-- Date filter form -->
+  <form method="get" style="margin-bottom: 1em;">
+    <label for="date">Pick a date:</label>
+    <input type="date" id="date" name="date" value="{{ selected_date }}">
+    <button type="submit">Show</button>
+  </form>
+
+  <!-- Messages list -->
+  <ul>
+    {% for msg in messages %}
+      <li>
+        <strong>{{ msg.station }}</strong> – {{ msg.text }}
+        (by {{ msg.observer }} at {{ msg.created_at|date:"H:i" }})
+      </li>
+    {% empty %}
+      <li>No messages for this date.</li>
+    {% endfor %}
+  </ul>
+{% endblock %}
